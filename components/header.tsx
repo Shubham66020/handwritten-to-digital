@@ -23,6 +23,9 @@ export default function Header() {
       <Link href="/pricing" className="hover:text-primary transition-colors">
         Pricing
       </Link>
+      <Link href="/dasboard" className="hover:text-primary transition-colors">
+        Dashboard
+      </Link>
     </>
   );
 

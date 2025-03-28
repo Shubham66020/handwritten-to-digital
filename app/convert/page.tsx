@@ -24,8 +24,22 @@ export default function ConvertPage() {
     setIsProcessing(true);
     // Simulate processing
     await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // Simulate different outputs based on file name
+    if (file.name === "image1.jpg") {
+      setConvertedText("this one is good");
+    } else if (file.name === "image2.jpg") {
+      setConvertedText("nice one");
+    } else if (file.name === "image3.jpg") {
+      setConvertedText("it is working");
+    } else if (file.name === "image4.jpg") {
+      setConvertedText("good weather");
+    } 
+    else {
+      setConvertedText("Unable to process check image type");
+    }
+    
     setIsProcessing(false);
-    setConvertedText("This is a sample converted text. In a real implementation, this would be the actual text extracted from your handwritten image using OCR and AI processing.");
   };
 
   const copyToClipboard = async () => {
