@@ -35,33 +35,35 @@ const mockHistory = [
 export default function HistoryPage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Conversion History</h1>
+      <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-8">Conversion History</h1>
       
-      <div className="rounded-md border">
+      <div className="rounded-md border overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Filename</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <TableHead className="min-w-[120px]">Filename</TableHead>
+              <TableHead className="min-w-[100px]">Date</TableHead>
+              <TableHead className="min-w-[100px]">Status</TableHead>
+              <TableHead className="text-right min-w-[120px]">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {mockHistory.map((item) => (
               <TableRow key={item.id}>
-                <TableCell>{item.filename}</TableCell>
+                <TableCell className="font-medium truncate max-w-[150px] md:max-w-none">
+                  {item.filename}
+                </TableCell>
                 <TableCell>{item.date}</TableCell>
                 <TableCell>{item.status}</TableCell>
                 <TableCell className="text-right">
                   <div className="flex justify-end gap-2">
-                    <Button variant="outline" size="icon">
+                    <Button variant="outline" size="icon" className="h-8 w-8">
                       <Eye className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" size="icon">
+                    <Button variant="outline" size="icon" className="h-8 w-8">
                       <Download className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" size="icon">
+                    <Button variant="outline" size="icon" className="h-8 w-8">
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>

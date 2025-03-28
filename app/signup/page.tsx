@@ -27,16 +27,16 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16 flex items-center justify-center min-h-[calc(100vh-200px)]">
-      <Card className="w-full max-w-md p-8">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2">Create an Account</h1>
+    <div className="container mx-auto px-4 py-8 md:py-16 flex items-center justify-center min-h-[calc(100vh-200px)]">
+      <Card className="w-full max-w-md p-6 md:p-8">
+        <div className="text-center mb-6 md:mb-8">
+          <h1 className="text-2xl md:text-3xl font-bold mb-2">Create an Account</h1>
           <p className="text-muted-foreground">
             Join Scribble2Text to start converting your handwriting
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
           <div className="space-y-2">
             <Label htmlFor="name">Full Name</Label>
             <div className="relative">

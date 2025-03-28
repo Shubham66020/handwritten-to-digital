@@ -48,12 +48,12 @@ export default function ConvertPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">Convert Handwriting to Text</h1>
+      <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-8 text-center">Convert Handwriting to Text</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Upload Image</h2>
-          <div className="border-2 border-dashed rounded-lg p-8 text-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto">
+        <Card className="p-4 md:p-6">
+          <h2 className="text-lg md:text-xl font-semibold mb-4">Upload Image</h2>
+          <div className="border-2 border-dashed rounded-lg p-4 md:p-8 text-center">
             <input
               type="file"
               accept="image/*"
@@ -62,16 +62,17 @@ export default function ConvertPage() {
               onChange={handleFileUpload}
               disabled={isUploading || isProcessing}
             />
-            <label
-              htmlFor="file-upload"
-              className="cursor-pointer flex flex-col items-center"
-            >
-              <Upload className="w-12 h-12 mb-4 text-muted-foreground" />
-              <p className="text-lg mb-2">Drag and drop your image here</p>
+            <div className="flex flex-col items-center">
+              <Upload className="w-8 h-8 md:w-12 md:h-12 mb-2 md:mb-4 text-muted-foreground" />
+              <p className="text-base md:text-lg mb-2">Upload your image here</p>
               <p className="text-sm text-muted-foreground mb-4">
-                or click to browse files
+                Supported formats: JPG, PNG, GIF
               </p>
-              <Button disabled={isUploading || isProcessing}>
+              <Button 
+                className="w-full max-w-xs"
+                disabled={isUploading || isProcessing}
+                onClick={() => document.getElementById('file-upload')?.click()}
+              >
                 {isUploading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -86,19 +87,20 @@ export default function ConvertPage() {
                   "Select Image"
                 )}
               </Button>
-            </label>
+            </div>
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-4 md:p-6">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold">Converted Text</h2>
+            <h2 className="text-lg md:text-xl font-semibold">Converted Text</h2>
             <div className="flex gap-2">
               <Button
                 variant="outline"
                 size="icon"
                 onClick={copyToClipboard}
                 disabled={!convertedText}
+                className="h-8 w-8 md:h-10 md:w-10"
               >
                 <Copy className="h-4 w-4" />
               </Button>
@@ -107,6 +109,7 @@ export default function ConvertPage() {
                 size="icon"
                 onClick={downloadText}
                 disabled={!convertedText}
+                className="h-8 w-8 md:h-10 md:w-10"
               >
                 <Download className="h-4 w-4" />
               </Button>
@@ -116,7 +119,7 @@ export default function ConvertPage() {
             value={convertedText}
             onChange={(e) => setConvertedText(e.target.value)}
             placeholder="Converted text will appear here..."
-            className="min-h-[300px]"
+            className="min-h-[200px] md:min-h-[300px] text-sm md:text-base"
           />
         </Card>
       </div>
