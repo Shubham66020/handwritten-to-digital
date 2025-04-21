@@ -11,6 +11,7 @@ export default function ConvertPage() {
   const [isUploading, setIsUploading] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [convertedText, setConvertedText] = useState("");
+  const [language, setLanguage] = useState("en"); // Default language is English
   const { toast } = useToast();
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,20 +26,19 @@ export default function ConvertPage() {
     // Simulate processing
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    // Simulate different outputs based on file name
+    // Simulate different outputs based on file name and language
     if (file.name === "image1.jpg") {
-      setConvertedText("this one is good");
+      setConvertedText(language === "en" ? "this one is good" : "esto es bueno");
     } else if (file.name === "image2.jpg") {
-      setConvertedText("nice one");
+      setConvertedText(language === "en" ? "nice one" : "uno bueno");
     } else if (file.name === "image3.jpg") {
-      setConvertedText("it is working");
+      setConvertedText(language === "en" ? "it is working" : "está funcionando");
     } else if (file.name === "image4.jpg") {
-      setConvertedText("good weather");
-    } 
-    else {
-      setConvertedText("Unable to process check image type");
+      setConvertedText(language === "en" ? "good weather" : "buen clima");
+    } else {
+      setConvertedText(language === "en" ? "Unable to process check image type" : "No se puede procesar, verifica el tipo de imagen");
     }
-    
+
     setIsProcessing(false);
   };
 
@@ -135,6 +135,22 @@ export default function ConvertPage() {
             placeholder="Converted text will appear here..."
             className="min-h-[200px] md:min-h-[300px] text-sm md:text-base"
           />
+          <div className="mt-4">
+            <label htmlFor="language-select" className="block text-sm font-medium mb-2">
+              Choose Language:
+            </label>
+            <select
+              id="language-select"
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="border rounded-md p-2 w-full"
+            >
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              
+              {/* Add more languages as needed */}
+            </select>
+          </div>
         </Card>
       </div>
     </div>
